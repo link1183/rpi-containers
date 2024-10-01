@@ -3,6 +3,9 @@ services:
     image: grafana/grafana-oss:11.2.1-ubuntu
     container_name: grafana-web
     restart: unless-stopped
+    networks:
+      - grafana_default
+      - bot_bot_network
     ports:
       - "3000:3000"
     volumes:
