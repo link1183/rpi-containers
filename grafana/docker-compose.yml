@@ -36,6 +36,7 @@ services:
     networks:
       - grafana_default
       - bot_bot_network
+      - bot_network # Add this line
 
 volumes:
   grafana-storage: {}
@@ -44,4 +45,6 @@ networks:
   grafana_default:
     driver: bridge
   bot_bot_network:
+    external: true
+  bot_network:
     external: true
