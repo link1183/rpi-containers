@@ -30,3 +30,7 @@ services:
 
 volumes:
   grafana-storage: {}
+
+networks:
+  bot-network:
+    driver: bridge
