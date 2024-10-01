@@ -23,6 +23,7 @@ services:
       - "/:/host:ro,rslave"
     networks:
       - grafana_default
+      - bot_bot_network
 
   prometheus:
     image: prom/prometheus
@@ -34,6 +35,7 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     networks:
       - grafana_default
+      - bot_bot_network
 
 volumes:
   grafana-storage: {}
