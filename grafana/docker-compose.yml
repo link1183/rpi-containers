@@ -1,0 +1,36 @@
+services:
+  grafana:
+    image: grafana/grafana-oss:11.2.1-ubuntu
+    container_name: grafana-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    environment:
+      - GF_SERVER_ROOT_URL=https://rpi.adrieng.ch/grafana/
+
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:v1.8.2
+    container_name: node_exporter
+    command:
+      - "--path.rootfs=/host"
+    restart: unless-stopped
+    volumes:
+      - "/:/host:ro,rslave"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus_container
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  alert_manager:
+    image: prom/alertmanager:v0.27.0
+    restart: unless-stopped
+
+volumes:
+  grafana-storage: {}
