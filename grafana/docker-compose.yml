@@ -24,7 +24,7 @@ services:
       - monitoring
 
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.54.1
     container_name: prometheus
     restart: unless-stopped
     ports:
@@ -35,7 +35,7 @@ services:
       - monitoring
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor
+    image: gcr.io/cadvisor/cadvisor:2.22.0-rc1
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -46,8 +46,20 @@ services:
     networks:
       - monitoring
 
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data # Persistent data storage
+    networks:
+      - monitoring
+
 volumes:
   grafana-storage: {}
+  portainer_data:
 
 networks:
   monitoring:
