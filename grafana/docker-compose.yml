@@ -46,6 +46,16 @@ services:
     networks:
       - monitoring
 
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter:0.11.0
+    container_name: nginx-exporter
+    ports:
+      - "9113:9113"
+    command:
+      - -nginx.scrape-uri=http://nginx:8080/nginx_status
+    networks:
+      - monitoring
+
 volumes:
   grafana-storage: {}
 
