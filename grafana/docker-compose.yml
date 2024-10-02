@@ -52,7 +52,7 @@ services:
     ports:
       - "9113:9113"
     command:
-      - -nginx.scrape-uri=http://127.0.0.1:8080/nginx_status
+      - -nginx.scrape-uri=http://127.0.0.1:8081/nginx_status
     networks:
       - monitoring
 
