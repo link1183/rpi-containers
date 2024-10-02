@@ -35,7 +35,7 @@ services:
       - monitoring
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:2.22.0-rc1
+    image: gcr.io/cadvisor/cadvisor
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -47,7 +47,7 @@ services:
       - monitoring
 
   portainer:
-    image: portainer/portainer-ce:latest
+    image: portainer/portainer-ce:2.22.0-rc1
     container_name: portainer
     ports:
       - "9000:9000"
