@@ -46,20 +46,8 @@ services:
     networks:
       - monitoring
 
-  portainer:
-    image: portainer/portainer-ce:2.22.0-rc1
-    container_name: portainer
-    ports:
-      - "9000:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data # Persistent data storage
-    networks:
-      - monitoring
-
 volumes:
   grafana-storage: {}
-  portainer_data:
 
 networks:
   monitoring:
