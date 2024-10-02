@@ -35,7 +35,7 @@ services:
       - monitoring
 
   cadvisor:
-    image: google/cadvisor:canary
+    image: raymondmm/cadvisor:0.33.0-buster-slim-arm64v8
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
