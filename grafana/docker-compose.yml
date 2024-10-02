@@ -46,6 +46,11 @@ services:
     networks:
       - monitoring
 
+  mysqld_exporter:
+    image: prom/mysqld-exporter:v0.15.1
+    networks:
+      - monitoring
+
 volumes:
   grafana-storage: {}
 
