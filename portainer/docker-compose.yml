@@ -8,11 +8,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data # Persistent data storage
     networks:
-      - monitoring
+      - grafana_monitoring
 
 volumes:
   portainer_data:
 
 networks:
-  monitoring:
+  grafana_monitoring:
     external: true
